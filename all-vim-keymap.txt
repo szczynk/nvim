@@ -1,0 +1,72 @@
+-- fugitive.lua
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git) -- "Git Status"
+vim.keymap.set("n", "<leader>p", function() vim.cmd.Git('push') end) -- "Push"
+vim.keymap.set("n", "<leader>P", function() vim.cmd.Git({'pull', '--rebase'}) end) -- "Pull with rebase"
+vim.keymap.set("n", "<leader>t", ":Git push -u origin ") -- "Track branch"
+
+-- harpoon.lua
+vim.keymap.set("n", "<leader>a", mark.add_file) -- "Add file"
+vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu) -- "Edit quick menu"
+vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end) -- "Harpoon file 1"
+vim.keymap.set("n", "<C-b>", function() ui.nav_file(2) end) -- "Browse to file 2"
+vim.keymap.set("n", "<C-g>", function() ui.nav_file(3) end) -- "Go to file 3"
+
+-- lsp.lua
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end) -- "Go to Definition"
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end) -- "Hover for info (K for Knowledge)"
+vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end) -- "View Workspace Symbols"
+vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end) -- "View Diagnostics"
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end) -- "Diagnostic next"
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end) -- "Diagnostic previous"
+vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end) -- "View Code Actions"
+vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end) -- "View References"
+vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end) -- "Rename"
+vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end) -- "Help with function signature"
+
+-- telescope.lua
+vim.keymap.set('n', '<leader>pf', builtin.find_files) -- "Find Files"
+vim.keymap.set('n', '<C-p>', builtin.git_files) -- "Git Files"
+vim.keymap.set('n', '<leader>ps', function() builtin.grep_string({search = vim.fn.input("Grep > ")}) end) -- "Search (grep) String"
+vim.keymap.set('n', '<leader>vh', builtin.help_tags) -- "View Help tags"
+
+-- trouble.lua
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>") -- "eXamine Quickfix"
+
+-- undotree.lua
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) -- "Undo tree"
+
+-- zenmode.lua
+vim.keymap.set("n", "<leader>zz", function() -- "Zen mode with numbers"
+vim.keymap.set("n", "<leader>zZ", function() -- "Zen mode without numbers"
+
+-- remap.lua
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- "Preview"
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- "Join lines in visual mode"
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- "Keep lines together in visual mode"
+vim.keymap.set("n", "J", "mzJ`z") -- "Join lines in normal mode"
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- "Down with centering"
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- "Up with centering"
+vim.keymap.set("n", "n", "nzzzv") -- "Next with centering"
+vim.keymap.set("n", "N", "Nzzzv") -- "Previous with centering"
+vim.keymap.set("n", "<leader>vwm", function() require("vim-with-me").StartVimWithMe() end) -- "Vim With Me start"
+vim.keymap.set("n", "<leader>svwm", function() require("vim-with-me").StopVimWithMe() end) -- "Stop Vim With Me"
+vim.keymap.set("x", "<leader>p", [["_dP]]) -- "Paste in visual mode"
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) -- "Yank"
+vim.keymap.set("n", "<leader>Y", [["+Y]]) -- "Yank line"
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]]) -- "Delete"
+vim.keymap.set("i", "<C-c>", "<Esc>") -- "Cancel input"
+vim.keymap.set("n", "Q", "<nop>") -- "Quiet (no operation)"
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- "Find in tmux"
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format) -- "Format"
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- "Next error"
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- "Previous error"
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- "Next location"
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- "Previous location"
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- "Substitute"
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>") -- "eXecute permission"
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>") -- "View Packer Profile"
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>") -- "Make it Rain"
+vim.keymap.set("n", "<leader><leader", function() vim.cmd("so") end) -- "Source"
+vim.keymap.set('n', '<C-s>', ':w<CR>', {noremap = true, silent = true}) -- "Save"
+vim.keymap.set('i', '<C-s>', '<C-c>:w<CR>', {noremap = true, silent = true}) -- "Save in insert mode"
+
